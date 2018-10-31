@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
-import { GistModule } from '@sgbj/angular-gist';
+import { NgxGistModule } from 'ngx-gist/dist/ngx-gist.module';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -16,7 +16,7 @@ import '@angular/material';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    GistModule
+    NgxGistModule
   ],
   providers: [],
   bootstrap: [AppComponent]
