@@ -18,7 +18,6 @@ export class DataStorageService {
       observe: 'body'
     }).map(
       (chapters) => {
-        console.log(chapters);
         chapters = chapters.sort((a, b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0));
         for (let chapter of chapters) {
           chapter.subchapters = chapter.subchapters.sort((a, b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0));
@@ -34,6 +33,7 @@ export class DataStorageService {
             }
           }
         }
+        console.log(chapters);
         return chapters;
       }
     )
