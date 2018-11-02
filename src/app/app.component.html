@@ -4,6 +4,88 @@
     Welcome to {{ title }}!
   </h1>
   <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-  <ngx-gist [gistId]="'Netherwulf/2d17f147c58978f757f25b02dd2e7765'"></ngx-gist>
+  <!--<ngx-gist [gistId]="'Netherwulf/2d17f147c58978f757f25b02dd2e7765'"></ngx-gist>-->
 </div>
-
+<div *ngFor="let chapter of chapters">
+  <div>Id: {{chapter.id | async}}</div>
+  <div>Name: {{chapter.name | async}}</div>
+  <div>Description: {{chapter.description | async}}</div>
+  <div>Subchapters:
+    <div *ngFor="let subchapter of chapter.subchapters">
+      <div>Id: {{subchapter.id | async}}</div>
+      <div>Name: {{subchapter.name | async}}</div>
+      <div>Content: {{subchapter.content | async}}</div>
+      <div>CodeLink: {{subchapter.codeLink | async}}</div>
+      <div *ngIf="subchapter.openQuestion != null">Open Question:
+        <div>Id: {{subchapter.openQuestion.id | async}}</div>
+        <div>Content: {{subchapter.openQuestion.content | async}}</div>
+        <div>Correct Answer: {{subchapter.openQuestion.correctAnswer | async}}</div>
+        <div>CodeLink: {{subchapter.openQuestion.codeLink | async}}</div>
+      </div>
+      <div *ngIf="subchapter.closedQuestion != null">Closed Question:
+        <div>Id: {{subchapter.closedQuestion.id | async}}</div>
+        <div>Content: {{subchapter.closedQuestion.content | async}}</div>
+        <div>CodeLink: {{subchapter.closedQuestion.codeLink | async}}</div>
+        <div *ngFor="let statement of subchapter.closedQuestion.statements">Statements:
+          <div>Id: {{statement.id | async}}</div>
+          <div>Content: {{statement.content | async}}</div>
+          <div>Is Correct: {{statement.isCorrect | async}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>Quiz:
+    <div>Id: {{chapter.quiz.id | async}}</div>
+    <div>Name: {{chapter.quiz.name | async}}</div>
+    <div *ngFor="let openQuestion of chapter.quiz.openQuestions">Open Questions:
+      <div>Id: {{openQuestion.id | async}}</div>
+      <div>Content: {{openQuestion.content | async}}</div>
+      <div>Correct Answer: {{openQuestion.correctAnswer | async}}</div>
+      <div>CodeLink: {{openQuestion.codeLink | async}}</div>
+    </div>
+    <div *ngFor="let closedQuestion of quiz.closedQuestions">Closed Questions:
+      <div>Id: {{closedQuestion.id | async}}</div>
+      <div>Content: {{closedQuestion.content | async}}</div>
+      <div>CodeLink: {{closedQuestion.codeLink | async}}</div>
+      <div *ngFor="let statement of closedQuestion.statements">Statements:
+        <div>Id: {{statement.id | async}}</div>
+        <div>Content: {{statement.content | async}}</div>
+        <div>Is Correct: {{statement.isCorrect | async}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngFor="let student of students">
+  <div>Id: {{student.id | async}}</div>
+  <div>Login: {{student.login | async}}</div>
+  <div>Password: {{student.password | async}}</div>
+  <div>Name: {{student.name | async}}</div>
+  <div>Surname: {{student.surname | async}}</div>
+  <div>Progress: {{student.progress | async}}</div>
+  <div>E-mail: {{student.email | async}}</div>
+  <div>Join date: {{student.joinDate | async}}</div>
+  <div>Answers:
+    <div *ngFor="let answer of student.answers">
+      <div>Id: {{answer.id | async}}</div>
+      <div>Content: {{answer.content | async}}</div>
+      <div>Is Correct: {{answer.isCorrect | async}}</div>
+      <div>Reply Date: {{answer.replyDate | async}}</div>
+      <div *ngIf="answer.openQuestion != null">
+        <div>Id: {{answer.openQuestion.id | async}}</div>
+        <div>Content: {{answer.openQuestion.content | async}}</div>
+        <div>Correct Answer: {{answer.openQuestion.correctAnswer | async}}</div>
+        <div>CodeLink: {{answer.openQuestion.codeLink | async}}</div>
+      </div>
+      <div *ngIf="answer.closedQuestion != null">Closed Question:
+        <div>Id: {{answer.closedQuestion.id | async}}</div>
+        <div>Content: {{answer.closedQuestion.content | async}}</div>
+        <div>CodeLink: {{answer.closedQuestion.codeLink | async}}</div>
+        <div *ngFor="let statement of answer.closedQuestion.statements">Statements:
+          <div>Id: {{statement.id | async}}</div>
+          <div>Content: {{statement.content | async}}</div>
+          <div>Is Correct: {{statement.isCorrect | async}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
