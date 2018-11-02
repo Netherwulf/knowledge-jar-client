@@ -7,23 +7,68 @@ import { NgxGistModule } from 'ngx-gist/dist/ngx-gist.module';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import '@angular/material';
+import {
+  MatAccordion,
+  MatButton,
+  MatCard,
+  MatExpansionPanel, MatExpansionPanelDescription, MatExpansionPanelHeader, MatExpansionPanelTitle, MatFormField, MatFormFieldModule,
+  MatListItem,
+  MatMenuModule,
+  MatNavList,
+  MatRippleModule,
+  MatToolbar
+} from '@angular/material';
+import {HttpClientModule} from '@angular/common/http';
 import {DataStorageService} from './shared/data-storage.service';
 import {ChapterService} from './chapters/chapter.service';
 import {StudentService} from './students/student.service';
-import {HttpClientModule} from '@angular/common/http';
+import { HeaderComponent } from './header/header.component';
+import { StudentComponent } from './students/student.component';
+import { ChaptersComponent } from './chapters/chapters.component';
+import { ChaptersListComponent } from './chapters/chapters-list/chapters-list.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import {AppRoutingModule} from './app-routing.module';
+import { SubchapterComponent } from './chapters/subchapter/subchapter.component';
+import { QuizComponent } from './chapters/quiz/quiz.component';
+import {AuthGuardService} from './auth/auth-guard.service';
+import {AuthService} from './auth/auth.service';
+import {PortalModule} from '@angular/cdk/portal';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    MatNavList,
+    MatListItem,
+    MatToolbar,
+    MatButton,
+    MatCard,
+    StudentComponent,
+    ChaptersComponent,
+    ChaptersListComponent,
+    SignupComponent,
+    SigninComponent,
+    MatAccordion,
+    MatExpansionPanel,
+    MatExpansionPanelHeader,
+    MatExpansionPanelTitle,
+    MatExpansionPanelDescription,
+    SubchapterComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     NgxGistModule,
-    HttpClientModule
+    HttpClientModule,
+    MatMenuModule,
+    MatRippleModule,
+    MatFormFieldModule,
+    AppRoutingModule,
+    PortalModule
   ],
-  providers: [DataStorageService, ChapterService, StudentService],
+  providers: [DataStorageService, ChapterService, StudentService, AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
