@@ -3,6 +3,8 @@ import {AuthService} from '../auth.service';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {StudentService} from '../../students/student.service';
+import {Student} from '../../shared/student.model';
+import {DataStorageService} from '../../shared/data-storage.service';
 
 @Component({
   selector: 'app-signup',
@@ -14,7 +16,10 @@ export class SignupComponent implements OnInit {
   hide = true;
   signupForm: FormGroup;
 
-  constructor(private authService: AuthService, private router: Router, private studentService: StudentService) {
+  constructor(private authService: AuthService,
+              private router: Router,
+              private studentService: StudentService,
+              private dataStorageService: DataStorageService) {
   }
 
   login = new FormControl(null, [Validators.required, this.forbiddenLoginsCheck.bind(this)]);
@@ -23,23 +28,42 @@ export class SignupComponent implements OnInit {
   surname = new FormControl(null, [Validators.required]);
   email = new FormControl(null, [Validators.required, Validators.email]);
 
-  getErrorMessage() {
+  getLoginErrorMessage() {
     return this.login.hasError('required') ? 'Pole wymagane' :
       this.login.hasError('loginIsForbidden') ? 'Login jest już zajęty' :
-        this.password.hasError('required') ? 'Pole wymagane' :
-          this.name.hasError('required') ? 'Pole wymagane' :
-            this.surname.hasError('required') ? 'Pole wymagane' :
-              this.email.hasError('required') ? 'Pole wymagane' :
-                this.name.hasError('email') ? 'Błędny e-mail' :
-        '';
+                  '';
+  }
+
+  getPasswordErrorMessage() {
+    return this.password.hasError('required') ? 'Pole wymagane' : '';
+  }
+
+  getNameErrorMessage() {
+    return this.name.hasError('required') ? 'Pole wymagane' : '';
+  }
+
+  getSurnameErrorMessage() {
+    return this.surname.hasError('required') ? 'Pole wymagane' : '';
   }
 
   onSignUp() {
-    // todo dodaj procej POSTowania nowego studenta do bazy przez API
-    (this.authService.signinUser(this.login.value, this.password.value));
-    if (true) {
-      this.router.navigate(['/']);
-    }
+    let createdStudent = new Student();
+    createdStudent.login = this.login.value;
+    createdStudent.password = this.password.value;
+    createdStudent.name = this.name.value;
+    createdStudent.surname = this.surname.value;
+    createdStudent.email = this.email.value;
+    this.studentService.addNewStudent(createdStudent)
+      .subscribe(student => {
+        this.studentService.addStudent(student);
+        this.authService.signinUser(student.login, student.password);
+      });
+    this.router.navigate(['/']);
+  }
+
+  getEmailErrorMessage() {
+    return this.email.hasError('required') ? 'Pole wymagane' :
+      this.email.hasError('email') ? 'Błędny e-mail' : '';
   }
 
   ngOnInit() {

@@ -1,4 +1,4 @@
-<mat-card style="margin-left: 43%; margin-right: 35%;">
+<mat-card style="width: 200px; margin-left: auto; margin-right: auto;">
   <mat-card-header>
     <mat-card-title style="margin-left:40%;">Logowanie</mat-card-title>
   </mat-card-header>
@@ -15,6 +15,6 @@
     </mat-form-field></p>
   </mat-card-content>
   <mat-card-actions align="end">
-    <button mat-button class="d-block mr-0 ml-auto" (click)="signIn()" [disabled]="!login.valid || !password.valid">Zaloguj się</button>
+    <button mat-raised-button class="d-block mr-0 ml-auto" (click)="signIn()" [disabled]="!login.valid || !password.valid">Zaloguj się</button>
   </mat-card-actions>
 </mat-card>

@@ -11,20 +11,6 @@ export class AuthService {
   constructor(private router: Router, private studentService: StudentService, private httpClient: HttpClient) {
   }
 
-  signupUser(user: Student) {
-    const foundStudent = this.studentService.getStudents()
-                          .find(student => student.login === user.login && student.password === user.password);
-    if (foundStudent === undefined) {
-      const request = new HttpRequest('POST', 'https://knowledge-jar.herokuapp.com/api/v1/students',
-        user, {
-          reportProgress: true,
-          // params: new HttpParams().set('auth', token)
-        }
-      );
-      return this.httpClient.request(request);
-    }
-  }
-
   signinUser(login: string, password: string): boolean {
     const foundStudent = this.studentService.getStudents().find(student => student.login === login && student.password === password);
     if (foundStudent === undefined) {

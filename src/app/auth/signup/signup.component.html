@@ -1,41 +1,36 @@
-<mat-card style="margin-left: 43%; margin-right: 35%;">
+<mat-card style="width: 200px; margin-left: auto; margin-right: auto;">
   <mat-card-header>
     <mat-card-title style="margin-left:40%;">Rejestracja</mat-card-title>
   </mat-card-header>
   <mat-card-content>
       <p><mat-form-field>
         <input matInput type="text" placeholder="Login" [formControl]="login" autocomplete="off" required>
-        <mat-error *ngIf="login.invalid">{{getErrorMessage()}}</mat-error>
+        <mat-error *ngIf="login.invalid">{{getLoginErrorMessage()}}</mat-error>
       </mat-form-field></p>
       <p><mat-form-field>
         <input matInput placeholder="Hasło" [type]="hide ? 'password' : 'text'" [formControl]="password" autocomplete="off" required>
         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error>
+        <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
       </mat-form-field></p>
       <p><mat-form-field>
         <input matInput type="text" placeholder="Imię" [formControl]="name" autocomplete="off" required>
-        <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
+        <mat-error *ngIf="name.invalid">{{getNameErrorMessage()}}</mat-error>
       </mat-form-field></p>
       <p><mat-form-field>
         <input matInput type="text" placeholder="Nazwisko" [formControl]="surname" autocomplete="off" required>
-        <mat-error *ngIf="surname.invalid">{{getErrorMessage()}}</mat-error>
+        <mat-error *ngIf="surname.invalid">{{getSurnameErrorMessage()}}</mat-error>
       </mat-form-field></p>
       <p><mat-form-field>
         <input matInput type="email" placeholder="E-mail" [formControl]="email" autocomplete="off" required>
-        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
       </mat-form-field></p>
-      <div *ngIf="(!login.valid && login.touched)
-                      || (!password.valid && password.touched)
-                      || (!name.valid && name.touched)
-                      || (!surname.valid && surname.touched)
-                      || (!email.valid && email.touched)" style="color: red">Proszę podać poprawne dane</div>
     <!--class="d-block mr-0 ml-auto"-->
   </mat-card-content>
   <mat-card-actions align="end">
-    <button mat-button  (click)="signUp()" [disabled]="(!login.valid && login.touched)
-                                                          || (!password.valid && password.touched)
-                                                          || (!name.valid && name.touched)
-                                                          || (!surname.valid && surname.touched)
-                                                          || (!email.valid && email.touched)">Zarejestruj się</button>
+    <button mat-raised-button  (click)="onSignUp()" [disabled]="!login.valid
+                                                          || !password.valid
+                                                          || !name.valid
+                                                          || !surname.valid
+                                                          || !email.valid">Zarejestruj się</button>
   </mat-card-actions>
 </mat-card>
