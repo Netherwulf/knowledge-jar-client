@@ -8,22 +8,13 @@ import { NgxGistModule } from 'ngx-gist/dist/ngx-gist.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {
-  MatAccordion,
-  MatButton,
-  MatCard,
-  MatCardModule,
-  MatExpansionPanel,
-  MatExpansionPanelDescription,
-  MatExpansionPanelHeader,
-  MatExpansionPanelTitle,
-  MatFormField,
+  MatButtonModule,
+  MatCardModule, MatExpansionModule,
   MatFormFieldModule,
   MatIconModule, MatInputModule,
-  MatListItem,
   MatMenuModule,
-  MatNavList,
   MatRippleModule,
-  MatToolbar
+  MatToolbarModule
 } from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import {DataStorageService} from './shared/data-storage.service';
@@ -47,20 +38,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
   declarations: [
     AppComponent,
     HeaderComponent,
-    MatNavList,
-    MatListItem,
-    MatToolbar,
-    MatButton,
     StudentComponent,
     ChaptersComponent,
     ChaptersListComponent,
     SignupComponent,
     SigninComponent,
-    MatAccordion,
-    MatExpansionPanel,
-    MatExpansionPanelHeader,
-    MatExpansionPanelTitle,
-    MatExpansionPanelDescription,
     SubchapterComponent,
     QuizComponent
   ],
@@ -78,7 +60,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     PortalModule,
     MatCardModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+    MatToolbarModule,
+    MatExpansionModule,
+    MatButtonModule
   ],
   providers: [DataStorageService, ChapterService, StudentService, AuthService, AuthGuardService],
   bootstrap: [AppComponent]
