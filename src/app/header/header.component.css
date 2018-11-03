@@ -1,0 +1,12 @@
+button {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+button#account-button {
+  margin-left: 15px;
+}
+
+button#register-button {
+  margin-right: 15px;
+}

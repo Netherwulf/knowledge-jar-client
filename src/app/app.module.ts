@@ -11,7 +11,14 @@ import {
   MatAccordion,
   MatButton,
   MatCard,
-  MatExpansionPanel, MatExpansionPanelDescription, MatExpansionPanelHeader, MatExpansionPanelTitle, MatFormField, MatFormFieldModule,
+  MatCardModule,
+  MatExpansionPanel,
+  MatExpansionPanelDescription,
+  MatExpansionPanelHeader,
+  MatExpansionPanelTitle,
+  MatFormField,
+  MatFormFieldModule,
+  MatIconModule, MatInputModule,
   MatListItem,
   MatMenuModule,
   MatNavList,
@@ -34,6 +41,7 @@ import { QuizComponent } from './chapters/quiz/quiz.component';
 import {AuthGuardService} from './auth/auth-guard.service';
 import {AuthService} from './auth/auth.service';
 import {PortalModule} from '@angular/cdk/portal';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -43,7 +51,6 @@ import {PortalModule} from '@angular/cdk/portal';
     MatListItem,
     MatToolbar,
     MatButton,
-    MatCard,
     StudentComponent,
     ChaptersComponent,
     ChaptersListComponent,
@@ -60,13 +67,18 @@ import {PortalModule} from '@angular/cdk/portal';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     NgxGistModule,
     HttpClientModule,
     MatMenuModule,
     MatRippleModule,
     MatFormFieldModule,
     AppRoutingModule,
-    PortalModule
+    PortalModule,
+    MatCardModule,
+    MatIconModule,
+    MatInputModule
   ],
   providers: [DataStorageService, ChapterService, StudentService, AuthService, AuthGuardService],
   bootstrap: [AppComponent]

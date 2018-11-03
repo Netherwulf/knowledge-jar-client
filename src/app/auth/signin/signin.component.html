@@ -1,3 +1,20 @@
-<p>
-  signin works!
-</p>
+<mat-card style="margin-left: 43%; margin-right: 35%;">
+  <mat-card-header>
+    <mat-card-title style="margin-left:40%;">Logowanie</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngIf="wrongCredentials" style="color: red">Błędny login lub hasło!</div>
+    <p><mat-form-field>
+      <input matInput type="text" placeholder="Login" [formControl]="login" required autocomplete="off">
+      <mat-error *ngIf="login.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field></p>
+    <p><mat-form-field>
+      <input matInput type="text" placeholder="Hasło" [type]="hide ? 'password' : 'text'" [formControl]="password" required autocomplete="off">
+      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field></p>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-button class="d-block mr-0 ml-auto" (click)="signIn()" [disabled]="!login.valid || !password.valid">Zaloguj się</button>
+  </mat-card-actions>
+</mat-card>
