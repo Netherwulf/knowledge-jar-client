@@ -1,3 +1,24 @@
-<p>
-  chapters-list works!
-</p>
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let chapter of chapters; let i = index">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ i+1 }}. {{ chapter.name }}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{ chapter.description }}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-nav-list>
+      <a mat-list-item
+         *ngFor="let subchapter of chapter.subchapters; let j = index"
+         [routerLink]="['../', chapter.id, 'subchapters', subchapter.id]">
+        <h4 matLine>{{ i+1 }}.{{ j+1 }}. {{subchapter.name}}</h4>
+      </a>
+      <mat-divider></mat-divider>
+      <mat-list-item [routerLink]="['../', chapter.id, 'quiz']">
+        <h4 matLine>{{chapter.quiz.name}}</h4>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-expansion-panel>
+</mat-accordion>

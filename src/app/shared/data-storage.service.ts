@@ -28,7 +28,7 @@ export class DataStorageService {
       .subscribe(
         (chapters: Chapter[]) => {
           this.chapterService.setChapters(chapters);
-          console.log(this.chapterService.getChapters());
+          // console.log(this.chapterService.getChapters());
         }
       );
   }
@@ -49,7 +49,7 @@ export class DataStorageService {
       .subscribe(
         (students: Student[]) => {
           this.studentService.setStudents(students);
-          console.log(this.studentService.getStudents());
+          // console.log(this.studentService.getStudents());
         }
       );
   }

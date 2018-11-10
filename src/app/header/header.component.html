@@ -1,8 +1,8 @@
 <mat-toolbar color="primary">
   Knowledge Jar
   <ng-template [ngIf]="authService.isAuthenticated()">
-    <button id="account-button" mat-button>Moje Konto</button>
-    <button mat-button>Rozdziały</button>
+    <button id="account-button" mat-button (click)="onSelectMyAccount()">Moje Konto</button>
+    <button mat-button (click)="onSelectChapters()">Rozdziały</button>
   </ng-template>
   <span style="flex: 1 1 auto;"></span>
   <ng-template [ngIf]="!authService.isAuthenticated()">

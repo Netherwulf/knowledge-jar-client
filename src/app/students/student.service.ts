@@ -22,8 +22,8 @@ export class StudentService {
     return this.students.slice();
   }
 
-  getStudent(index: number) {
-    return this.students.slice()[index];
+  getStudent(studentId: number) {
+    return this.students.slice().find(studentElem => studentElem.id === studentId);
   }
 
   addStudent(student: Student) {

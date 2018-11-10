@@ -25,4 +25,12 @@ export class HeaderComponent implements OnInit {
   onLogOut() {
     this.authService.logout();
   }
+
+  onSelectMyAccount() {
+    this.router.navigate(['/student']);
+  }
+
+  onSelectChapters() {
+    this.router.navigate(['/chapters', 'list']);
+  }
 }

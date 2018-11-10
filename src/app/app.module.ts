@@ -11,9 +11,9 @@ import {
   MatButtonModule,
   MatCardModule, MatExpansionModule,
   MatFormFieldModule,
-  MatIconModule, MatInputModule,
+  MatIconModule, MatInputModule, MatListModule,
   MatMenuModule,
-  MatRippleModule,
+  MatRippleModule, MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
@@ -33,6 +33,9 @@ import {AuthGuardService} from './auth/auth-guard.service';
 import {AuthService} from './auth/auth.service';
 import {PortalModule} from '@angular/cdk/portal';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { OpenQuestionComponent } from './chapters/open-question/open-question.component';
+import { ClosedQuestionComponent } from './chapters/closed-question/closed-question.component';
+import {ng2Gist} from 'ng2-gist';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     SignupComponent,
     SigninComponent,
     SubchapterComponent,
-    QuizComponent
+    QuizComponent,
+    OpenQuestionComponent,
+    ClosedQuestionComponent
   ],
   imports: [
     BrowserModule,
@@ -63,9 +68,17 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatInputModule,
     MatToolbarModule,
     MatExpansionModule,
-    MatButtonModule
+    MatButtonModule,
+    MatListModule,
+    MatTabsModule
   ],
-  providers: [DataStorageService, ChapterService, StudentService, AuthService, AuthGuardService],
+  providers: [
+    DataStorageService,
+    ChapterService,
+    StudentService,
+    AuthService,
+    AuthGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,15 @@
-<p>
-  subchapter works!
-</p>
+<mat-tab-group>
+  <mat-tab label="Podrozdział">
+    <mat-card class="subchapter-card">
+      <mat-card-header>
+        <mat-card-title>{{ subchapter.name }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p #content>{{ subchapter.content }}</p>
+        <img *ngIf="subchapter.codeLink != undefined" class="img-responsive" [src]="subchapter.codeLink">
+      </mat-card-content>
+    </mat-card>
+  </mat-tab>
+  <mat-tab label="Zadanie"> Content 2 </mat-tab>
+</mat-tab-group>
+
