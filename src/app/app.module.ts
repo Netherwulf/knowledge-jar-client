@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
-import { NgxGistModule } from 'ngx-gist/dist/ngx-gist.module';
-
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {
@@ -35,7 +33,6 @@ import {PortalModule} from '@angular/cdk/portal';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { OpenQuestionComponent } from './chapters/open-question/open-question.component';
 import { ClosedQuestionComponent } from './chapters/closed-question/closed-question.component';
-import {ng2Gist} from 'ng2-gist';
 
 @NgModule({
   declarations: [
@@ -56,7 +53,6 @@ import {ng2Gist} from 'ng2-gist';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxGistModule,
     HttpClientModule,
     MatMenuModule,
     MatRippleModule,
