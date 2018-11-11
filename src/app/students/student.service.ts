@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs';
 import {HttpClient, HttpHeaders, HttpRequest} from '@angular/common/http';
 import {Student} from '../shared/student.model';
+import {Answer} from '../shared/answer.model';
+import {AuthService} from '../auth/auth.service';
 
 @Injectable()
 export class StudentService {
@@ -57,6 +59,22 @@ export class StudentService {
   setStudents(students: Student[]) {
     this.students = students;
     this.studentsChanged.next(this.students.slice());
+  }
+
+  addNewAnswer(answer: Answer) {
+    if (answer.id !== null) {
+      // console.log('Aktualizuje: ' + answer);
+      return this.httpClient
+        .put<Answer>('https://knowledge-jar.herokuapp.com/api/v1/students/' + answer.studentId + '/answers', answer, this.httpOptions);
+    } else {
+      // console.log('Dodaje nowe: ' + answer);
+      return this.httpClient
+        .post<Answer>('https://knowledge-jar.herokuapp.com/api/v1/students/' + answer.studentId + '/answers', answer, this.httpOptions);
+    }
+  }
+
+  addAnswer(answer: Answer) {
+    this.students.find(studentElem => studentElem.id === answer.studentId).answers.push(answer);
   }
 
 }

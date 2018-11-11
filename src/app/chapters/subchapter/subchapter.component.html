@@ -10,6 +10,9 @@
       </mat-card-content>
     </mat-card>
   </mat-tab>
-  <mat-tab label="Zadanie"> Content 2 </mat-tab>
+  <mat-tab label="Zadanie">
+    <app-open-question *ngIf="subchapter.openQuestion != null" [openQuestion]="subchapter.openQuestion"></app-open-question>
+    <app-closed-question *ngIf="subchapter.closedQuestion != null" [closedQuestion]="subchapter.closedQuestion"></app-closed-question>
+  </mat-tab>
 </mat-tab-group>
 

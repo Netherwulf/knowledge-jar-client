@@ -23,7 +23,7 @@ export class SubchapterComponent implements OnInit, AfterViewInit {
       .subscribe(
         (params: Params) => {
           this.subchapter = this.chapterService.getSubchapter(+params['id'], +params['subchapterId']);
-          console.log(this.subchapter);
+          // console.log(this.subchapter);
         }
       );
   }

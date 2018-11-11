@@ -12,22 +12,5 @@ export class Answer {
   public statement: Statement;
   public closedQuestion: ClosedQuestion;
 
-
-  constructor(id: number,
-              content: string,
-              isCorrect: string,
-              replyDate: string,
-              studentId: number,
-              openQuestion: OpenQuestion,
-              statement: Statement,
-              closedQuestion: ClosedQuestion) {
-    this.id = id;
-    this.content = content;
-    this.isCorrect = isCorrect;
-    this.replyDate = replyDate;
-    this.studentId = studentId;
-    this.openQuestion = openQuestion;
-    this.statement = statement;
-    this.closedQuestion = closedQuestion;
-  }
+  constructor() {  }
 }

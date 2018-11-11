@@ -3,6 +3,7 @@ import {Student} from '../shared/student.model';
 import {Router} from '@angular/router';
 import {StudentService} from '../students/student.service';
 import {HttpClient, HttpRequest} from '@angular/common/http';
+import {Answer} from '../shared/answer.model';
 
 @Injectable()
 export class AuthService {
@@ -32,5 +33,9 @@ export class AuthService {
 
   isAuthenticated() {
     return this.user != null;
+  }
+
+  addAnswer(answer: Answer) {
+    this.user.answers.push(answer);
   }
 }

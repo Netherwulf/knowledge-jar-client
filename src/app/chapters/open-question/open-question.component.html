@@ -1,3 +1,26 @@
-<p>
-  open-question works!
-</p>
+<mat-card class="open-question-card">
+  <mat-card-header>
+    <mat-card-title>Zadanie</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p #content>{{ openQuestion.content }}</p>
+    <img *ngIf="openQuestion.codeLink != undefined" class="img-responsive" [src]="openQuestion.codeLink">
+    <p><mat-form-field>
+      <input
+        matInput
+        type="text"
+        placeholder="Odpowiedź"
+        [formControl]="answer"
+        [attr.disabled]="correctAnswerSubmitted?'':null"
+        [ngStyle]="correctAnswerSubmitted ? {'color': 'green'} : {'color': 'black'}"
+        autocomplete="off"
+        required>
+      <mat-error *ngIf="answer.invalid">{{getAnswerErrorMessage()}}</mat-error>
+    </mat-form-field></p>
+    <p *ngIf="correctAnswerSubmitted" class="correctAnswerMessage">Poprawna odpowiedź!</p>
+    <p *ngIf="wrongAnswer" class="wrongAnswerMessage">Błędna odpowiedź!</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button  (click)="onSubmitAnswer()" [disabled]="!answer.valid">{{ buttonText }}</button>
+  </mat-card-actions>
+</mat-card>

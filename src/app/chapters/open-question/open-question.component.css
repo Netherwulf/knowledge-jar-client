@@ -1,0 +1,16 @@
+.subchapter-card {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.wrongAnswerMessage {
+  color: red;
+}
+.correctAnswerMessage {
+  color: green;
+}
