@@ -18,7 +18,7 @@ export class AnswersComponent implements OnInit {
 
   ngOnInit() {
     this.answers = this.studentService.getStudent(this.authService.getUser().id).answers;
-    console.log(this.answers);
+    // console.log(this.answers);
   }
 
   onReturn() {
