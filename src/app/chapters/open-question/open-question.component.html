@@ -12,8 +12,9 @@
         placeholder="Odpowiedź"
         [formControl]="answer"
         [attr.disabled]="correctAnswerSubmitted?'':null"
-        [ngStyle]="correctAnswerSubmitted ? {'color': 'green'} : {'color': 'black'}"
+        [ngStyle]="correctAnswerSubmitted ? {'color': 'green'} : wrongAnswer ? {'color': 'red'} : {'color': 'black'}"
         autocomplete="off"
+        autofocus
         required>
       <mat-error *ngIf="answer.invalid">{{getAnswerErrorMessage()}}</mat-error>
     </mat-form-field></p>

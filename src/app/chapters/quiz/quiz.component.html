@@ -1,3 +1,64 @@
-<p>
-  quiz works!
-</p>
+<mat-vertical-stepper linear="true" #stepper>
+  <mat-step *ngFor="let closedQuestion of quiz.closedQuestions; let i = index" editable="false">
+    <ng-template matStepLabel>Zadanie {{ i + 1 }}</ng-template>
+    <mat-card class="closed-question-card">
+      <mat-card-header>
+        <mat-card-title>Zadanie {{ i + 1 }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p #content>{{ closedQuestion.content }}</p>
+        <img *ngIf="closedQuestion.codeLink != undefined" class="img-responsive" [src]="closedQuestion.codeLink">
+        <p>
+          <mat-radio-group class="example-radio-group" [formControl]="answer" name="Odpowiedź" [disabled]="correctAnswerSubmitted" required>
+            <mat-radio-button class="example-radio-button" *ngFor="let statement of closedQuestion.statements" [value]="statement.content">
+              {{ statement.content }}
+            </mat-radio-button>
+          </mat-radio-group>
+        </p>
+        <p *ngIf="correctAnswerSubmitted" class="correctAnswerMessage">Poprawna odpowiedź!</p>
+        <p *ngIf="wrongAnswer" class="wrongAnswerMessage">Błędna odpowiedź!</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button  (click)="onSubmitClosedQuestionAnswer(closedQuestion)" [disabled]="!answer.valid">{{ buttonText }}</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-step>
+  <mat-step *ngFor="let openQuestion of quiz.openQuestions; let i = index" editable="false">
+    <ng-template matStepLabel>Zadanie {{ i + 1 + quiz.closedQuestions.length }}</ng-template>
+    <mat-card class="open-question-card">
+      <mat-card-header>
+        <mat-card-title>Zadanie {{ i + 1 + quiz.closedQuestions.length }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p #content>{{ openQuestion.content }}</p>
+        <img *ngIf="openQuestion.codeLink != undefined" class="img-responsive" [src]="openQuestion.codeLink">
+        <p><mat-form-field>
+          <input
+            matInput
+            type="text"
+            placeholder="Odpowiedź"
+            [formControl]="answer"
+            [attr.disabled]="correctAnswerSubmitted?'':null"
+            [ngStyle]="correctAnswerSubmitted ? {'color': 'green'} : wrongAnswer ? {'color': 'red'} : {'color': 'black'}"
+            autocomplete="off"
+            autofocus
+            required>
+          <mat-error *ngIf="answer.invalid">{{getAnswerErrorMessage()}}</mat-error>
+        </mat-form-field></p>
+        <p *ngIf="correctAnswerSubmitted" class="correctAnswerMessage">Poprawna odpowiedź!</p>
+        <p *ngIf="wrongAnswer" class="wrongAnswerMessage">Błędna odpowiedź!</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button  (click)="onSubmitOpenQuestionAnswer(openQuestion)" [disabled]="!answer.valid">{{ buttonText }}</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-step>
+  <mat-step editable="false">
+    <ng-template matStepLabel>Zakończenie</ng-template>
+    Udało Ci się ukończyć {{ quiz.name }}!
+    <div>
+      <button mat-raised-button
+              (click)="onQuizFinished()">Dalej</button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>

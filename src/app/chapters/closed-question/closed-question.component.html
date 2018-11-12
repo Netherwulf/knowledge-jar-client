@@ -1,3 +1,21 @@
-<p>
-  closed-question works!
-</p>
+<mat-card class="closed-question-card">
+  <mat-card-header>
+    <mat-card-title>Zadanie</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p #content>{{ closedQuestion.content }}</p>
+    <img *ngIf="closedQuestion.codeLink != undefined" class="img-responsive" [src]="closedQuestion.codeLink">
+    <p>
+      <mat-radio-group class="example-radio-group" [formControl]="answer" name="Odpowiedź" [disabled]="correctAnswerSubmitted" required>
+        <mat-radio-button class="example-radio-button" *ngFor="let statement of closedQuestion.statements" [value]="statement.content">
+          {{ statement.content }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </p>
+    <p *ngIf="correctAnswerSubmitted" class="correctAnswerMessage">Poprawna odpowiedź!</p>
+    <p *ngIf="wrongAnswer" class="wrongAnswerMessage">Błędna odpowiedź!</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button  (click)="onSubmitAnswer()" [disabled]="!answer.valid">{{ buttonText }}</button>
+  </mat-card-actions>
+</mat-card>

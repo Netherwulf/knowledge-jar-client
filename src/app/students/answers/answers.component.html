@@ -1,0 +1,24 @@
+<mat-card class="answers-card">
+  <mat-card-header>
+    <mat-card-title>Udzielone odpowiedzi</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      <mat-list>
+        <mat-divider></mat-divider>
+        <div *ngFor="let answer of answers" class="question-answer">
+          <h3 mat-subheader *ngIf="answer.closedQuestion != null">{{answer.closedQuestion.content}}</h3>
+          <h3 mat-subheader *ngIf="answer.openQuestion != null">{{answer.openQuestion.content}}</h3>
+          <mat-list-item class="center">
+            <h4 mat-line *ngIf="answer.closedQuestion != null" [ngStyle]="answer.isCorrect ? {'color': 'green'} : {'color': 'red'}" class="answer"><strong>{{answer.content}}</strong></h4>
+            <h4 mat-line *ngIf="answer.openQuestion != null" [ngStyle]="answer.isCorrect ? {'color': 'green'} : {'color': 'red'}" class="answer"><strong>{{answer.content}}</strong></h4>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </div>
+      </mat-list>
+    </p>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-raised-button (click)="onReturn()">Powrót</button>
+  </mat-card-actions>
+</mat-card>

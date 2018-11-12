@@ -1,3 +1,51 @@
-<p>
-  student works!
-</p>
+<mat-card class="student-card">
+  <mat-card-header>
+    <mat-card-title>{{ student.name }} {{ student.surname }}</mat-card-title>
+    <mat-card-subtitle>Dane Ucznia</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      <mat-list>
+        <mat-divider></mat-divider>
+        <h3 mat-subheader>Imię</h3>
+        <mat-list-item>
+          <h4 mat-line>{{student.name}}</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <h3 mat-subheader>Nazwisko</h3>
+        <mat-list-item>
+          <h4 mat-line>{{student.surname}}</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <h3 mat-subheader>E-mail</h3>
+        <mat-list-item>
+          <h4 mat-line>{{student.email}}</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <h3 mat-subheader>Data dołączenia</h3>
+        <mat-list-item>
+          <h4 mat-line>{{student.joinDate}}</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <h3 mat-subheader>Postęp</h3>
+        <mat-list-item>
+          <h4 mat-line>{{student.answers.length / 30.0 * 100.0}} %</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <h3 mat-subheader>Login</h3>
+        <mat-list-item>
+          <h4 mat-line>{{student.login}}</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <h3 mat-subheader>Hasło</h3>
+        <mat-list-item>
+          <h4 mat-line>{{student.password}}</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+    </p>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-raised-button (click)="onAnswersView()">Podgląd odpowiedzi</button>
+  </mat-card-actions>
+</mat-card>

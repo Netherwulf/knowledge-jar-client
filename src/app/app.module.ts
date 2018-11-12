@@ -10,8 +10,8 @@ import {
   MatCardModule, MatExpansionModule,
   MatFormFieldModule,
   MatIconModule, MatInputModule, MatListModule,
-  MatMenuModule,
-  MatRippleModule, MatTabsModule,
+  MatMenuModule, MatRadioModule,
+  MatRippleModule, MatStepperModule, MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
@@ -33,6 +33,7 @@ import {PortalModule} from '@angular/cdk/portal';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { OpenQuestionComponent } from './chapters/open-question/open-question.component';
 import { ClosedQuestionComponent } from './chapters/closed-question/closed-question.component';
+import { AnswersComponent } from './students/answers/answers.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { ClosedQuestionComponent } from './chapters/closed-question/closed-quest
     SubchapterComponent,
     QuizComponent,
     OpenQuestionComponent,
-    ClosedQuestionComponent
+    ClosedQuestionComponent,
+    AnswersComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +68,9 @@ import { ClosedQuestionComponent } from './chapters/closed-question/closed-quest
     MatExpansionModule,
     MatButtonModule,
     MatListModule,
-    MatTabsModule
+    MatTabsModule,
+    MatRadioModule,
+    MatStepperModule
   ],
   providers: [
     DataStorageService,

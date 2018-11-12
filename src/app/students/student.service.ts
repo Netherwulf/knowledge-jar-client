@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders, HttpRequest} from '@angular/common/http';
 import {Student} from '../shared/student.model';
 import {Answer} from '../shared/answer.model';
 import {AuthService} from '../auth/auth.service';
+import {Chapter} from '../shared/chapter.model';
 
 @Injectable()
 export class StudentService {

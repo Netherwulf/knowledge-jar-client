@@ -19,7 +19,7 @@ export class ChapterService {
   }
 
   getChapter(index: number): Chapter {
-    return this.chapters.slice()[index];
+    return this.chapters.slice().find(chapterElem => chapterElem.id === index);
   }
 
   addChapter(chapter: Chapter) {
@@ -39,22 +39,26 @@ export class ChapterService {
 
   setChapters(chapters: Chapter[]) {
     chapters[0].subchapters = [
-      chapters[0].subchapters[0],
       chapters[0].subchapters[2],
+      chapters[0].subchapters[0],
       chapters[0].subchapters[1]
     ];
     chapters[1].subchapters = [
-      chapters[1].subchapters[0],
+      chapters[1].subchapters[1],
       chapters[1].subchapters[2],
-      chapters[1].subchapters[1]
+      chapters[1].subchapters[0]
+    ];
+    chapters[2].subchapters = [
+      chapters[2].subchapters[1],
+      chapters[2].subchapters[0],
     ];
     chapters[3].subchapters = [
       chapters[3].subchapters[3],
-      chapters[3].subchapters[1],
-      chapters[3].subchapters[4],
-      chapters[3].subchapters[2],
       chapters[3].subchapters[5],
-      chapters[3].subchapters[0]
+      chapters[3].subchapters[2],
+      chapters[3].subchapters[0],
+      chapters[3].subchapters[1],
+      chapters[3].subchapters[4]
     ];
     this.chapters = chapters;
     this.chaptersChanged.next(this.chapters.slice());

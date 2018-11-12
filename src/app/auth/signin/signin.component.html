@@ -5,7 +5,7 @@
   <mat-card-content>
     <div *ngIf="wrongCredentials" style="color: red">Błędny login lub hasło!</div>
     <p><mat-form-field>
-      <input matInput type="text" placeholder="Login" [formControl]="login" required autocomplete="off">
+      <input matInput type="text" placeholder="Login" [formControl]="login" required autocomplete="off" autofocus>
       <mat-error *ngIf="login.invalid">{{getErrorMessage()}}</mat-error>
     </mat-form-field></p>
     <p><mat-form-field>

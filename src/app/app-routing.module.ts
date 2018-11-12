@@ -10,6 +10,7 @@ import {AuthGuardService} from './auth/auth-guard.service';
 import {ChaptersListComponent} from './chapters/chapters-list/chapters-list.component';
 import {OpenQuestionComponent} from './chapters/open-question/open-question.component';
 import {ClosedQuestionComponent} from './chapters/closed-question/closed-question.component';
+import {AnswersComponent} from './students/answers/answers.component';
 
 const appRoutes: Routes = [
   // { path: '', redirectTo: '/chapters', pathMatch: 'full' },
@@ -22,6 +23,7 @@ const appRoutes: Routes = [
       { path: ':id/subchapters/:subchapterId/closed-question', component: ClosedQuestionComponent, canActivate: [AuthGuardService] },
     ] },
   { path: 'student', component: StudentComponent, canActivate: [AuthGuardService] },
+  { path: 'student/answers', component: AnswersComponent, canActivate: [AuthGuardService] },
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent }
 ];

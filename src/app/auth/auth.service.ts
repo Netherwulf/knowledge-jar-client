@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {StudentService} from '../students/student.service';
 import {HttpClient, HttpRequest} from '@angular/common/http';
 import {Answer} from '../shared/answer.model';
+import {Chapter} from '../shared/chapter.model';
 
 @Injectable()
 export class AuthService {
@@ -38,4 +39,5 @@ export class AuthService {
   addAnswer(answer: Answer) {
     this.user.answers.push(answer);
   }
+
 }
