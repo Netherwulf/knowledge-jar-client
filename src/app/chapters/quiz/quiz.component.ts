@@ -63,14 +63,15 @@ export class QuizComponent implements OnInit {
     } else {
       const createdAnswer = new Answer();
 
-      createdAnswer.id = this.authService
-        .getUser()
+      let foundAnswer = this.studentService.getStudent(this.authService.getUser().id)
         .answers
-        .find(answer => answer.closedQuestion != null && answer.closedQuestion.id === currentClosedQuestion.id) !== undefined ? this.authService
-        .getUser()
-        .answers
-        .find(answer => answer.closedQuestion != null && answer.closedQuestion.id === currentClosedQuestion.id)
-        .id : null;
+        .find(answer => answer.closedQuestion != null && answer.closedQuestion.id === closedQuestion.id);
+
+      if ( foundAnswer != null) {
+        createdAnswer.id = foundAnswer.id;
+      } else {
+        createdAnswer.id = null;
+      }
 
       createdAnswer.content = this.answer.value;
 
@@ -112,14 +113,15 @@ export class QuizComponent implements OnInit {
     } else {
       const createdAnswer = new Answer();
 
-      createdAnswer.id = this.authService
-        .getUser()
+      let foundAnswer = this.studentService.getStudent(this.authService.getUser().id)
         .answers
-        .find(answer => answer.openQuestion != null && answer.openQuestion.id === currentOpenQuestion.id) !== undefined ? this.authService
-        .getUser()
-        .answers
-        .find(answer => answer.openQuestion != null && answer.openQuestion.id === currentOpenQuestion.id)
-        .id : null;
+        .find(answer => answer.openQuestion != null && answer.openQuestion.id === openQuestion.id);
+
+      if ( foundAnswer != null) {
+        createdAnswer.id = foundAnswer.id;
+      } else {
+        createdAnswer.id = null;
+      }
 
       createdAnswer.content = this.answer.value;
 

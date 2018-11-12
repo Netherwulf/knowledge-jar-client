@@ -44,14 +44,15 @@ export class OpenQuestionComponent implements OnInit {
     } else {
       const createdAnswer = new Answer();
 
-      createdAnswer.id = this.authService
-        .getUser()
+      let foundAnswer = this.studentService.getStudent(this.authService.getUser().id)
         .answers
-        .find(answer => answer.openQuestion != null && answer.openQuestion.id === this.openQuestion.id) !== undefined ? this.authService
-        .getUser()
-        .answers
-        .find(answer => answer.openQuestion != null && answer.openQuestion.id === this.openQuestion.id)
-        .id : null;
+        .find(answer => answer.openQuestion != null && answer.openQuestion.id === this.openQuestion.id);
+
+      if ( foundAnswer != null) {
+        createdAnswer.id = foundAnswer.id;
+      } else {
+        createdAnswer.id = null;
+      }
 
       createdAnswer.content = this.answer.value;
 
