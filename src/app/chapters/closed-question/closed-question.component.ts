@@ -5,6 +5,7 @@ import {StudentService} from '../../students/student.service';
 import {AuthService} from '../../auth/auth.service';
 import {FormControl, Validators} from '@angular/forms';
 import {Answer} from '../../shared/answer.model';
+import {DataStorageService} from '../../shared/data-storage.service';
 
 @Component({
   selector: 'app-closed-question',
@@ -19,7 +20,8 @@ export class ClosedQuestionComponent implements OnInit {
 
   constructor(private router: Router,
               private studentService: StudentService,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private dataStorageService: DataStorageService) { }
 
   answer = new FormControl(null, [Validators.required]);
 
@@ -63,8 +65,8 @@ export class ClosedQuestionComponent implements OnInit {
 
       this.studentService.addNewAnswer(createdAnswer)
         .subscribe(answer => {
-          this.studentService.addAnswer(answer);
-          this.authService.addAnswer(answer);
+          this.dataStorageService.getStudents();
+          this.authService.signinUser(this.authService.getUser().login, this.authService.getUser().password);
         });
 
       if (createdAnswer.isCorrect === 'true') {

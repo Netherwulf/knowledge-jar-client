@@ -7,4 +7,7 @@ div {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-
+::ng-deep .mat-list .mat-list-item .mat-line{
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}

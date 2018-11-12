@@ -75,8 +75,30 @@ export class StudentService {
   }
 
   addAnswer(answer: Answer) {
-    if (!(this.students.find(studentElem => studentElem.id === answer.studentId).answers.map(answerEl => answerEl.id).indexOf(answer.id) !== -1)) {
-      this.students.find(studentElem => studentElem.id === answer.studentId).answers.push(answer);
+    if (!(this.students
+      .find(studentElem => studentElem.id === answer.studentId).answers
+      .map(answerEl => answerEl.id).indexOf(answer.id) !== -1)) {
+      if (answer.openQuestion != null) {
+        let foundAnswer = this.students
+          .find(studentElem => studentElem.id === answer.studentId)
+          .answers
+          .find(answerElem => answerElem.openQuestion.id === answer.openQuestion.id);
+        foundAnswer.isCorrect = answer.isCorrect;
+        foundAnswer.content = answer.content;
+        foundAnswer.replyDate = answer.replyDate;
+      }
+      if (answer.closedQuestion != null) {
+        let foundAnswer = this.students
+          .find(studentElem => studentElem.id === answer.studentId)
+          .answers
+          .find(answerElem => answerElem.closedQuestion.id === answer.closedQuestion.id);
+        foundAnswer.isCorrect = answer.isCorrect;
+        foundAnswer.content = answer.content;
+        foundAnswer.replyDate = answer.replyDate;
+      }
+    } else {
+      this.students
+        .find(studentElem => studentElem.id === answer.studentId).answers.push(answer);
     }
   }
 

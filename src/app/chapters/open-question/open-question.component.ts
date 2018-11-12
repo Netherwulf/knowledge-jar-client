@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {StudentService} from '../../students/student.service';
 import {Answer} from '../../shared/answer.model';
 import {AuthService} from '../../auth/auth.service';
+import {DataStorageService} from '../../shared/data-storage.service';
 
 @Component({
   selector: 'app-open-question',
@@ -19,7 +20,8 @@ export class OpenQuestionComponent implements OnInit {
 
   constructor(private router: Router,
               private studentService: StudentService,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private dataStorageService: DataStorageService) { }
 
   answer = new FormControl(null, [Validators.required]);
 
@@ -66,8 +68,8 @@ export class OpenQuestionComponent implements OnInit {
 
       this.studentService.addNewAnswer(createdAnswer)
         .subscribe(answer => {
-          this.studentService.addAnswer(answer);
-          this.authService.addAnswer(answer);
+          this.dataStorageService.getStudents();
+          this.authService.signinUser(this.authService.getUser().login, this.authService.getUser().password);
         });
 
       if (createdAnswer.isCorrect === 'true') {

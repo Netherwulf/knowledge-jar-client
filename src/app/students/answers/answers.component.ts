@@ -17,8 +17,8 @@ export class AnswersComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    this.answers = this.authService.getUser().answers;
-    // console.log(this.authService.getUser().answers);
+    this.answers = this.studentService.getStudent(this.authService.getUser().id).answers;
+    console.log(this.answers);
   }
 
   onReturn() {

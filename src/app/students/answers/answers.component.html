@@ -10,8 +10,8 @@
           <h3 mat-subheader *ngIf="answer.closedQuestion != null">{{answer.closedQuestion.content}}</h3>
           <h3 mat-subheader *ngIf="answer.openQuestion != null">{{answer.openQuestion.content}}</h3>
           <mat-list-item class="center">
-            <h4 mat-line *ngIf="answer.closedQuestion != null" [ngStyle]="answer.isCorrect ? {'color': 'green'} : {'color': 'red'}" class="answer"><strong>{{answer.content}}</strong></h4>
-            <h4 mat-line *ngIf="answer.openQuestion != null" [ngStyle]="answer.isCorrect ? {'color': 'green'} : {'color': 'red'}" class="answer"><strong>{{answer.content}}</strong></h4>
+            <h4 mat-line *ngIf="answer.closedQuestion != null" [ngStyle]="answer.isCorrect === 'true' ? {'color': 'green'} : {'color': 'red'}" class="answer"><strong>{{answer.content}}</strong></h4>
+            <h4 mat-line *ngIf="answer.openQuestion != null" [ngStyle]="answer.isCorrect === 'true' ? {'color': 'green'} : {'color': 'red'}" class="answer"><strong>{{answer.content}}</strong></h4>
           </mat-list-item>
           <mat-divider></mat-divider>
         </div>

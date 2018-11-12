@@ -10,6 +10,7 @@ import {FormControl, Validators} from '@angular/forms';
 import {OpenQuestion} from '../../shared/open-question.model';
 import {MatStepper} from '@angular/material';
 import {Chapter} from '../../shared/chapter.model';
+import {DataStorageService} from '../../shared/data-storage.service';
 
 @Component({
   selector: 'app-quiz',
@@ -28,7 +29,8 @@ export class QuizComponent implements OnInit {
               private router: Router,
               private studentService: StudentService,
               private chapterService: ChapterService,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private dataStorageService: DataStorageService) { }
 
   answer = new FormControl(null, [Validators.required]);
 
@@ -86,8 +88,8 @@ export class QuizComponent implements OnInit {
 
       this.studentService.addNewAnswer(createdAnswer)
         .subscribe(answer => {
-          this.studentService.addAnswer(answer);
-          this.authService.addAnswer(answer);
+          this.dataStorageService.getStudents();
+          this.authService.signinUser(this.authService.getUser().login, this.authService.getUser().password);
         });
 
       if (createdAnswer.isCorrect === 'true') {
@@ -135,8 +137,8 @@ export class QuizComponent implements OnInit {
 
       this.studentService.addNewAnswer(createdAnswer)
         .subscribe(answer => {
-          this.studentService.addAnswer(answer);
-          this.authService.addAnswer(answer);
+          this.dataStorageService.getStudents();
+          this.authService.signinUser(this.authService.getUser().login, this.authService.getUser().password);
         });
 
       if (createdAnswer.isCorrect === 'true') {
