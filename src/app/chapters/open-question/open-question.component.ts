@@ -69,7 +69,6 @@ export class OpenQuestionComponent implements OnInit {
       this.studentService.addNewAnswer(createdAnswer)
         .subscribe(answer => {
           this.dataStorageService.getStudents();
-          this.authService.signinUser(this.authService.getUser().login, this.authService.getUser().password);
         });
 
       if (createdAnswer.isCorrect === 'true') {

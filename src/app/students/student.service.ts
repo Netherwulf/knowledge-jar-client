@@ -3,8 +3,6 @@ import {Subject} from 'rxjs';
 import {HttpClient, HttpHeaders, HttpRequest} from '@angular/common/http';
 import {Student} from '../shared/student.model';
 import {Answer} from '../shared/answer.model';
-import {AuthService} from '../auth/auth.service';
-import {Chapter} from '../shared/chapter.model';
 
 @Injectable()
 export class StudentService {
@@ -63,43 +61,17 @@ export class StudentService {
   }
 
   addNewAnswer(answer: Answer) {
+
     if (answer.id !== null) {
-      // console.log('Aktualizuje: ' + answer);
+      console.log('Aktualizuje:');
+      console.log(answer);
       return this.httpClient
         .put<Answer>('https://knowledge-jar.herokuapp.com/api/v1/students/' + answer.studentId + '/answers', answer, this.httpOptions);
     } else {
-      // console.log('Dodaje nowe: ' + answer);
+      console.log('Dodaje nowe:');
+      console.log(answer);
       return this.httpClient
         .post<Answer>('https://knowledge-jar.herokuapp.com/api/v1/students/' + answer.studentId + '/answers', answer, this.httpOptions);
     }
   }
-
-  addAnswer(answer: Answer) {
-    if (!(this.students
-      .find(studentElem => studentElem.id === answer.studentId).answers
-      .map(answerEl => answerEl.id).indexOf(answer.id) !== -1)) {
-      if (answer.openQuestion != null) {
-        let foundAnswer = this.students
-          .find(studentElem => studentElem.id === answer.studentId)
-          .answers
-          .find(answerElem => answerElem.openQuestion.id === answer.openQuestion.id);
-        foundAnswer.isCorrect = answer.isCorrect;
-        foundAnswer.content = answer.content;
-        foundAnswer.replyDate = answer.replyDate;
-      }
-      if (answer.closedQuestion != null) {
-        let foundAnswer = this.students
-          .find(studentElem => studentElem.id === answer.studentId)
-          .answers
-          .find(answerElem => answerElem.closedQuestion.id === answer.closedQuestion.id);
-        foundAnswer.isCorrect = answer.isCorrect;
-        foundAnswer.content = answer.content;
-        foundAnswer.replyDate = answer.replyDate;
-      }
-    } else {
-      this.students
-        .find(studentElem => studentElem.id === answer.studentId).answers.push(answer);
-    }
-  }
-
 }
