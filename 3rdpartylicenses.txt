@@ -364,15 +364,19 @@ MIT
 
 @angular/material/divider
 
-@angular/material/tabs
-
-@angular/material/card
-
-@angular/material/form-field
+@angular/material/radio
 
 @angular/material/icon
 
+@angular/material/stepper
+
+@angular/material/card
+
 @angular/material/button
+
+@angular/material/form-field
+
+@angular/material/tabs
 
 @angular/material/toolbar
 
