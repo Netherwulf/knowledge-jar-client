@@ -75,7 +75,9 @@ export class StudentService {
   }
 
   addAnswer(answer: Answer) {
-    this.students.find(studentElem => studentElem.id === answer.studentId).answers.push(answer);
+    if (!(this.students.find(studentElem => studentElem.id === answer.studentId).answers.map(answerEl => answerEl.id).indexOf(answer.id) !== -1)) {
+      this.students.find(studentElem => studentElem.id === answer.studentId).answers.push(answer);
+    }
   }
 
 }

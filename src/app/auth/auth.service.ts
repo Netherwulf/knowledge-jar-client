@@ -37,7 +37,9 @@ export class AuthService {
   }
 
   addAnswer(answer: Answer) {
-    this.user.answers.push(answer);
+    if (this.user.answers.map(answerEl => answerEl.id).indexOf(answer.id) !== -1) {
+      this.user.answers.push(answer);
+    }
   }
 
 }
