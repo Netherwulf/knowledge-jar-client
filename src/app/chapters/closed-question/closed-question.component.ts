@@ -24,16 +24,16 @@ export class ClosedQuestionComponent implements OnInit {
   answer = new FormControl(null, [Validators.required]);
 
   ngOnInit() {
-    buttonText = 'Sprawdź';
-    correctAnswerSubmitted = false;
-    wrongAnswer = false;
+    this.buttonText = 'Sprawdź';
+    this.correctAnswerSubmitted = false;
+    this.wrongAnswer = false;
   }
 
   onSubmitAnswer() {
     if (this.buttonText === 'Dalej') {
-      buttonText = 'Sprawdź';
-      correctAnswerSubmitted = false;
-      wrongAnswer = false;
+      this.buttonText = 'Sprawdź';
+      this.correctAnswerSubmitted = false;
+      this.wrongAnswer = false;
       this.router.navigate(['/chapters', 'list']);
     } else {
       const createdAnswer = new Answer();
