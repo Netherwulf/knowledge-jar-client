@@ -41,6 +41,9 @@ export class QuizComponent implements OnInit {
           // console.log(this.quiz);
         }
       );
+    buttonText = 'Sprawdź';
+    correctAnswerSubmitted = false;
+    wrongAnswer = false;
   }
 
   getAnswerErrorMessage() {
@@ -147,6 +150,9 @@ export class QuizComponent implements OnInit {
   }
 
   onQuizFinished() {
+    buttonText = 'Sprawdź';
+    correctAnswerSubmitted = false;
+    wrongAnswer = false;
     this.router.navigate(['/chapters', 'list']);
   }
 }

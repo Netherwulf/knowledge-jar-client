@@ -24,6 +24,9 @@ export class OpenQuestionComponent implements OnInit {
   answer = new FormControl(null, [Validators.required]);
 
   ngOnInit() {
+    buttonText = 'Sprawdź';
+    correctAnswerSubmitted = false;
+    wrongAnswer = false;
   }
 
   getAnswerErrorMessage() {
@@ -32,6 +35,9 @@ export class OpenQuestionComponent implements OnInit {
 
   onSubmitAnswer() {
     if (this.buttonText === 'Dalej') {
+      buttonText = 'Sprawdź';
+      correctAnswerSubmitted = false;
+      wrongAnswer = false;
       this.router.navigate(['/chapters', 'list']);
     } else {
       const createdAnswer = new Answer();
