@@ -53,12 +53,12 @@ export class ChapterService {
       chapters[2].subchapters[0],
     ];
     chapters[3].subchapters = [
-      chapters[3].subchapters[3],
-      chapters[3].subchapters[5],
-      chapters[3].subchapters[2],
       chapters[3].subchapters[0],
       chapters[3].subchapters[1],
-      chapters[3].subchapters[4]
+      chapters[3].subchapters[2],
+      chapters[3].subchapters[4],
+      chapters[3].subchapters[5],
+      chapters[3].subchapters[3]
     ];
     this.chapters = chapters;
     this.chaptersChanged.next(this.chapters.slice());
