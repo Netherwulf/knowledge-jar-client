@@ -39,26 +39,26 @@ export class ChapterService {
 
   setChapters(chapters: Chapter[]) {
     chapters[0].subchapters = [
+      chapters[0].subchapters[1],
       chapters[0].subchapters[2],
-      chapters[0].subchapters[0],
-      chapters[0].subchapters[1]
+      chapters[0].subchapters[0]
     ];
     chapters[1].subchapters = [
+      chapters[1].subchapters[0],
       chapters[1].subchapters[1],
-      chapters[1].subchapters[2],
-      chapters[1].subchapters[0]
+      chapters[1].subchapters[2]
     ];
     chapters[2].subchapters = [
-      chapters[2].subchapters[1],
       chapters[2].subchapters[0],
+      chapters[2].subchapters[1],
     ];
     chapters[3].subchapters = [
-      chapters[3].subchapters[0],
-      chapters[3].subchapters[1],
       chapters[3].subchapters[2],
       chapters[3].subchapters[4],
       chapters[3].subchapters[5],
-      chapters[3].subchapters[3]
+      chapters[3].subchapters[0],
+      chapters[3].subchapters[3],
+      chapters[3].subchapters[1]
     ];
     this.chapters = chapters;
     this.chaptersChanged.next(this.chapters.slice());
