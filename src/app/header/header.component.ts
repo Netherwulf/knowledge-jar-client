@@ -33,4 +33,8 @@ export class HeaderComponent implements OnInit {
   onSelectChapters() {
     this.router.navigate(['/chapters', 'list']);
   }
+
+  onSelectIndexPage() {
+    this.router.navigate(['']);
+  }
 }

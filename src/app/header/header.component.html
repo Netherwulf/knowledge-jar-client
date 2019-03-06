@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  Knowledge Jar
+  <a (click)="onSelectIndexPage()">Knowledge Jar</a>
   <ng-template [ngIf]="authService.isAuthenticated()">
     <button id="account-button" mat-button (click)="onSelectMyAccount()">Moje Konto</button>
     <button mat-button (click)="onSelectChapters()">Rozdziały</button>
