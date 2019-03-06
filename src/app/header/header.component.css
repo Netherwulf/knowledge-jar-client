@@ -10,3 +10,7 @@ button#account-button {
 button#register-button {
   margin-right: 15px;
 }
+
+a {
+  cursor: pointer;
+}
